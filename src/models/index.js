@@ -1,7 +1,8 @@
+var Datatypes = require('sequelize');
 module.exports = function (sequelize) {
-  console.log('imported');
+  // console.log('imported');
   var model = {};
-  model.User = require('./User')(sequelize);
+  model.User = require('./User')(sequelize, Datatypes);
   model.createTables = function(){
     model.User.sync().then(function() {
       // table is created

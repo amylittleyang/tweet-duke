@@ -50,7 +50,7 @@ sequelize
   .authenticate()
   .then(function(err) {
     console.log('Connection has been established successfully.');
-    var Models = require('./models')(sequelize);
+    // var Models = require('./models')(sequelize);
     // Models.createTables();
   })
   .catch(function (err) {
