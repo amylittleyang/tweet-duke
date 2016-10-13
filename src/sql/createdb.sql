@@ -1,0 +1,35 @@
+CREATE TABLE IF NOT EXISTS "user" (
+  uid INT NOT NULL PRIMARY KEY,
+  name VARCHAR(30) NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS "thing" (
+  tid INT NOT NULL PRIMARY KEY,
+  name VARCHAR(30) NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS "subscribes" (
+  uid INT NOT NULL REFERENCING user.uid,
+  category VARCHAR(20) NOT NULL,
+  PRIMARY KEY(uid,category)
+);
+
+CREATE TABLE IF NOT EXISTS "tags" (
+  tid INT NOT NULL REFERENCES "thing",
+  tag VARCHAR(15) NOT NULL,
+  freq INT NOT NULL,
+  PRIMARY KEY (tid,tag)
+);
+
+CREATE TABLE IF NOT EXISTS "ratings" (
+  uid INT NOT NULL REFERENCES "user",
+  tid INT NOT NULL REFERENCES "thing",
+  rating INT NOT NULL CHECK (rating>=0 AND rating<=5),
+  timestamp VARCHAR(30) NOT NULL,
+  media TEXT
+);
+
+CREATE TABLE IF NOT EXISTS "directory" (
+  tid INT NOT NULL REFERENCES "thing",
+  category VARCHAR(20) NOT NULL
+);

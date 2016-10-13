@@ -1,8 +1,3 @@
-
-/**
- * Module dependencies
- */
-
 var express = require('express'),
   bodyParser = require('body-parser'),
   // methodOverride = require('method-override'),
@@ -11,14 +6,10 @@ var express = require('express'),
   routes = require('./routes'),
   api = require('./api'),
   http = require('http'),
-  path = require('path');
+  path = require('path'),
+  Sequelize = require('sequelize');
 
 var app = module.exports = express();
-
-
-/**
- * Configuration
- */
 
 // all environments
 app.set('port', process.env.PORT || 3000);
@@ -42,18 +33,29 @@ if (env === 'production') {
   // TODO
 }
 
-
 /**
  * Routes
  */
-
-// serve index and view partials
 app.use('/', routes);
 
 // JSON API
 // app.use('/api/', api);
+app.use('/api', api(sequelize));
 
-// redirect all others to the index (HTML5 history);
+// initialize with connection string
+var sequelize = new Sequelize('postgres://postgres@localhost:5432/cs316_project');
+
+// connect to postgres database named 'cs316_project'
+sequelize
+  .authenticate()
+  .then(function(err) {
+    console.log('Connection has been established successfully.');
+    var Models = require('./models')(sequelize);
+    // Models.createTables();
+  })
+  .catch(function (err) {
+    console.log('Unable to connect to the database:', err);
+  });
 
 
 /**

@@ -4,11 +4,22 @@
   "private": true,
   "main": "dist",
   "dependencies": {
-    "body-parser": "^1.0.2",
-    "error-handler": "^0.1.4",
-    "express": "~4.1.1",
-    "method-override": "^1.0.0",
-    "morgan": "^1.0.0"
+    "angular": "^1.5.5",
+    "angular-animate": "^1.5.5",
+    "angular-aria": "^1.5.5",
+    "angular-material": "git+https://github.com/angular/bower-material.git#master",
+    "angular-messages": "^1.5.5",
+    "body-parser": "^1.13.3",
+    "bootstrap": "^3.3.7",
+    "compression": "^1.5.2",
+    "cors": "^2.7.1",
+    "express": "^4.13.3",
+    "morgan": "^1.7.0",
+    "pg": "^6.1.0",
+    "pg-hstore": "^2.3.2",
+    "pug": "^2.0.0-beta6",
+    "resource-router-middleware": "^0.5.1",
+    "sequelize": "^3.24.3"
   },
   "scripts": {
     "dev": "nodemon -w src --exec \"babel-node src --presets es2015,stage-0\"",
@@ -30,21 +41,6 @@
       "no-console": 0,
       "no-unused-vars": 1
     }
-  },
-  "dependencies": {
-    "body-parser": "^1.13.3",
-    "bootstrap": "^3.3.7",
-    "compression": "^1.5.2",
-    "cors": "^2.7.1",
-    "express": "^4.13.3",
-    "morgan": "^1.7.0",
-    "pug": "^2.0.0-beta6",
-    "resource-router-middleware": "^0.5.1",
-    "angular": "^1.5.5",
-    "angular-animate": "^1.5.5",
-    "angular-aria": "^1.5.5",
-    "angular-messages": "^1.5.5",
-    "angular-material": "git+https://github.com/angular/bower-material.git#master"
   },
   "peerDependencies": {
     "angular": "@>=1.3 <1.6",
