@@ -1,15 +1,19 @@
-var express = require('express'),
-  bodyParser = require('body-parser'),
-  // methodOverride = require('method-override'),
-  // errorHandler = require('error-handler'),
-  morgan = require('morgan'),
-  routes = require('./routes'),
-  api = require('./api'),
-  http = require('http'),
-  path = require('path'),
-  Sequelize = require('sequelize');
+import http from 'http';
+import express from 'express';
+import morgan from 'morgan';
+// import cors from 'cors';
+import bodyParser from 'body-parser';
+// import initializeDb from './db';
+// import middleware from './middleware';
+import api from './api';
+import routes from './routes';
+// import config from './config.json';
+// import mongoose from 'mongoose';
+import path from 'path';
+import Sequelize from 'sequelize';
 
-var app = module.exports = express();
+let app = express();
+app.server = http.createServer(app);
 
 // all environments
 app.set('port', process.env.PORT || 3000);
@@ -17,9 +21,9 @@ app.set('port', process.env.PORT || 3000);
 app.use(morgan('dev'));
 app.use(bodyParser());
 // app.use(methodOverride());
-app.use(express.static(path.join(__dirname, 'public')));
-app.use(express.static(path.join(__dirname, 'node_modules')));
-app.use(express.static(path.join(__dirname, 'bower_components')));
+app.use('/', routes);
+app.use(express.static(path.join(__dirname, '/public')));
+app.use(express.static(path.join(__dirname, '/../node_modules')));
 
 var env = process.env.NODE_ENV || 'development';
 
@@ -36,11 +40,10 @@ if (env === 'production') {
 /**
  * Routes
  */
-app.use('/', routes);
+
 
 // JSON API
 // app.use('/api/', api);
-app.use('/api', api(sequelize));
 
 // initialize with connection string
 var sequelize = new Sequelize('postgres://postgres@localhost:5432/cs316_project');
@@ -57,6 +60,7 @@ sequelize
     console.log('Unable to connect to the database:', err);
   });
 
+app.use('/api', api({sequelize}));
 
 /**
  * Start Server

@@ -1,11 +1,10 @@
 import { Router } from 'express';
-// import hardware from './hardware.js';
-module.exports = function (sequelize) {
+export default ({sequelize}) => {
   let api = Router();
+  var user = require('./UserAPIController')(sequelize);
   // TODO: access control
   
-  // api.get('/hardware/',hardware.findAll);
-  // api.get('/hardware/checkedout',hardware.findCheckedOut);
+  api.get('/:uid',user.homePageData);
 
   return api;
 }
