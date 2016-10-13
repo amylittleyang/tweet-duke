@@ -1,1 +1,2 @@
-Hello World
+# CS 316 Starter Project
+
