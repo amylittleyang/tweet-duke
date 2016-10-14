@@ -1,0 +1,17 @@
+Amy Yang
+Helped with idea generation
+Created description of the web interface with a canned demo
+Worked on creating database relations 
+
+Austin Hua
+Helped create SQL queries
+Wrote and updated the progress report
+
+Boxong (Bo) Yin
+Created sample dataset
+Helped create SQL queries
+Updated the progress report
+
+Nayib Gloria
+Created the ER diagram for the database design
+Designed the database schema

@@ -11,9 +11,16 @@ npm install
 
 # Run   
 npm run dev   
+
 # App will be availabe at localhost:3000/   
 
+# Create and load sample database   
+psql cs316_project -af /src/sql/sampleDataSet.sql   
+
 ```
+## SQL files   
+All SQL files are located under src/sql. createdb.sql is the script used to define the tables and constraints. test-sample.sql is the test script.
+
 ## Roadmap   
 1. SQL schema   
 2. Create relations   
