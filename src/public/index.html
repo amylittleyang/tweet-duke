@@ -22,7 +22,6 @@
     <div ng-app="app" ng-cloak>
 
       <md-content>
-
         <md-toolbar>
           <div class="md-toolbar-tools">
             <md-button aria-label="Go Back">
@@ -40,6 +39,59 @@
             </md-button>
           </div>
         </md-toolbar>
+      </md-content>
+      <md-content>
+        <div layout="row" style="width:100%; height:700px;">
+          <div layout="column" style="height:700px; width:260px;">
+            <md-sidenav style="width:260px; height:100%;" class="site-sidenav md-sidenav-left md-whiteframe-z2 " md-component-id="left"  md-is-locked-open="$mdMedia('gt-sm')" tabindex="-1">
+          <!-- <md-content layout-padding> -->
+              <md-button style="width:110%; margin-left:-10px; margin-right: -10px; text-align:left;padding-left:30px;"" class="md-primary" >
+                <i class="material-icons">pets</i>
+                Pets
+              </md-button>
+
+              <md-button style="width:110%; margin-left:-10px; margin-right: -10px; text-align:left;padding-left:30px;"" class="md-primary" >
+                <i class="material-icons">favorite</i>
+                Food
+              </md-button>
+              <md-button style="width:110%; margin-left:-10px; margin-right: -10px; text-align:left;padding-left:30px;"" class="md-primary" >
+                <i class="material-icons">content_paste</i>
+                study
+              </md-button>
+
+              <md-button style="width:110%; margin-left:-10px; margin-right: -10px;text-align:left; padding-left:30px;" class="md-primary">
+                <i class="material-icons">movie_filter</i>
+                Movies
+              </md-button>
+              <md-button style="width:110%; margin-left:-10px; margin-right: -10px; text-align:left;padding-left:30px;"" class="md-primary" >
+                <i class="material-icons">class</i>
+                Math
+              </md-button>
+              <md-button style="width:110%; margin-left:-10px; margin-right: -10px; text-align:left;padding-left:30px;"" class="md-primary" >
+                <i class="material-icons">theaters</i>
+                Free shows
+              </md-button>
+
+              <md-button style="width:110%; margin-left:-10px; margin-right: -10px; text-align:left;padding-left:30px;"" class="md-primary" >
+                <i class="material-icons">settings_voice</i>
+                speakers
+              </md-button>
+              <md-button style="width:110%; margin-left:-10px; margin-right: -10px; text-align:left;padding-left:30px;"" class="md-primary" >
+                <i class="material-icons">weekend</i>
+                weekend
+              </md-button>
+              <md-button style="width:110%; margin-left:-10px; margin-right: -10px; text-align:left;padding-left:30px;"" class="md-primary" >
+                <i class="material-icons">camera</i>
+                photos
+              </md-button>
+              <md-button style="width:110%; margin-left:-10px; margin-right: -10px; text-align:left;padding-left:30px;"" class="md-primary" >
+                <i class="material-icons">tag_faces</i>
+                fall break
+              </md-button>
+          </md-sidenav>
+        </div>
+        <div ng-view layout="column">
+        </div>
 
       </md-content>
     </div>
