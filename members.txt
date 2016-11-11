@@ -1,17 +1,7 @@
-Amy Yang
-Helped with idea generation
-Created description of the web interface with a canned demo
-Worked on creating database relations 
+Bo Yin--Worked on script to generate the production database
 
-Austin Hua
-Helped create SQL queries
-Wrote and updated the progress report
+Austin Hua--Worked on script to generate the production database
 
-Boxong (Bo) Yin
-Created sample dataset
-Helped create SQL queries
-Updated the progress report
+Amy Yang-- Worked on website frontend + backend, wrote production database queries
 
-Nayib Gloria
-Created the ER diagram for the database design
-Designed the database schema
+Nayib Gloria-- Worked on website frontend + backend, wrote production database queries

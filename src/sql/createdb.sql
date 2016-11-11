@@ -30,6 +30,6 @@ CREATE TABLE IF NOT EXISTS "ratings" (
 );
 
 CREATE TABLE IF NOT EXISTS "directory" (
-  tid INT NOT NULL REFERENCES "thing",
+  tid VARCHAR(20) NOT NULL REFERENCES "thing",
   category VARCHAR(20) NOT NULL
-);  
+);
