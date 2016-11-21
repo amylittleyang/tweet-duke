@@ -12,13 +12,16 @@ module.exports = function (sequelize) {
     */
 
     sequelize.query(
-        "SELECT d.tid,AVG(r.rating) AS avg, COUNT(r.rating) AS count\
-        FROM ratings r JOIN directory d ON r.tid=d.tid\
-        WHERE d.category=''"+category+"''\
-        GROUP BY d.tid\
-        HAVING COUNT(r.rating)>=0\
-        ORDER BY AVG(r.rating) DESC\
-        LIMIT 5;",
+        "WITH table_t AS ( \
+          SELECT d.tid,AVG(r.rating) AS avg, COUNT(r.rating) AS count\
+          FROM ratings r JOIN directory d ON r.tid=d.tid\
+          WHERE d.category='"+category+"'\
+          GROUP BY d.tid\
+          HAVING COUNT(r.rating)>=0\
+          ORDER BY AVG(r.rating) DESC\
+        LIMIT 5)\
+        SELECT * FROM table_t JOIN thing ON thing.tid=table_t.tid;",
+
         { type: sequelize.QueryTypes.SELECT }
       )
     .then(function(users) {
@@ -40,12 +43,14 @@ module.exports = function (sequelize) {
           LIMIT 5;
       */
       sequelize.query(
-        "SELECT d.tid,AVG(r.rating) AS avg, COUNT(r.rating) AS count, MAX(r.timestamp) AS timestamp\
-        FROM ratings r JOIN directory d ON r.tid=d.tid\
-        WHERE d.category='"+category+"'\
-        GROUP BY d.tid\
-        ORDER BY MAX(r.timestamp) DESC\
-        LIMIT 5;",
+        "WITH table_t AS (\
+          SELECT d.tid,AVG(r.rating) AS avg, COUNT(r.rating) AS count, MAX(r.timestamp) AS timestamp\
+          FROM ratings r JOIN directory d ON r.tid=d.tid\
+          WHERE d.category='"+category+"'\
+          GROUP BY d.tid\
+          ORDER BY MAX(r.timestamp) DESC\
+          LIMIT 5)\
+        SELECT * FROM table_t JOIN thing ON thing.tid=table_t.tid",
         { type: sequelize.QueryTypes.SELECT })
       .then(function(users) {
         res.json(users);
