@@ -4,10 +4,10 @@ Using Node.js, Express.js, AngularJS, Sequelize and PostgreSQL
 ## Run   
 ```
 # Clone project   
-git clone git@gitlab.oit.duke.edu:jy152/316-final-project.git  
+git clone https://github.com/amylittleyang/tweet-duke.git
 
 # Install Dependencies   
-cd 316-final-project   
+cd tweet-duke   
 npm install   
 
 # Run   
@@ -18,8 +18,8 @@ npm run dev
 # Create db
 psql CREATE DATABASE cs316_project
 
-# Create and load sample database   
-psql cs316_project -af src/sql/sampleDataSet.sql   
+# Create and load sample production database   
+psql cs316_project -af src/sql/sample-production-db.sql   
 
 ```
 ## SQL files   
