@@ -1,6 +1,6 @@
 <!-- <h1 style="margin-top:100px; ">home</h1> -->
-<md-content>
-<div layout="row" style="height:700px;">
+<!-- <md-content>
+<div layout="row" style="height:700px;"> -->
   <div flex-xs flex-gt-xs="45" layout="column">
     <div ng-repeat="p in data1">
       <md-card>
@@ -10,7 +10,10 @@
           </md-card-avatar>
           <md-card-header-text>
             <span class="md-title">{{p.name}}</span>
-            <span class="md-subhead">Rating: {{p.avg}}/5</span>
+            <div layout="row">
+              <span class="md-subhead">Rating: {{p.avg}}/5 </span>
+              <span style="margin-left:60%;" class="md-subhead">{{p.count}} ratings</span>
+            </div>
           </md-card-header-text>
         </md-card-header>
         <img ng-src="http://media.gettyimages.com/photos/cameron-crazies-support-the-duke-university-blue-devils-during-the-picture-id57564780" class="md-card-image" alt="Washed Out">
@@ -20,15 +23,10 @@
           </md-card-title-text>
         </md-card-title>
         <md-card-content>
-          <p>
-
-          </p>
         </md-card-content>
         </md-card>
     </div>
   </div>
-
-
 
   <div flex-xs flex-gt-xs="45" layout="column">
     <div ng-repeat="p in data2">
@@ -39,13 +37,19 @@
           </md-card-avatar>
           <md-card-header-text>
             <span class="md-title">{{p.name}}</span>
-            <span class="md-subhead">Rating: {{p.avg}}/5</span>
+            <div layout="row">
+              <span class="md-subhead">Rating: {{p.avg}}/5 </span>
+              <span style="margin-left:60%;" class="md-subhead">{{p.count}} ratings</span>
+            </div>
           </md-card-header-text>
         </md-card-header>
         <img ng-src="http://media.gettyimages.com/photos/cameron-crazies-support-the-duke-university-blue-devils-during-the-picture-id57564780" class="md-card-image" alt="Washed Out">
         <md-card-title>
           <md-card-title-text>
-            <span class="md-headline">{{p.name}}</span>
+            <!-- <div layout="row"> -->
+              <span class="md-headline">{{p.name}}</span>
+              <span class="md-subhead">{{p.timestamp}}</span>
+            <!-- </row> -->
           </md-card-title-text>
         </md-card-title>
         <md-card-content>
@@ -57,6 +61,6 @@
     </div>
 
   </div>
-
+<!--
 </div>
-</md-content>
+</md-content> -->

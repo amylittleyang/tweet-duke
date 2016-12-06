@@ -5,6 +5,7 @@
     <!-- <link href="css/main.css" rel="stylesheet"> -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
       rel="stylesheet">
+    <link href="css/app.css" rel="stylesheet">
 
     <script src="angular/angular.js" type="text/javascript"></script>
     <script src="angular-animate/angular-animate.js" type="text/javascript"></script>
@@ -91,7 +92,40 @@
               </md-button>
           </md-sidenav>
         </div>
-        <div ng-view layout="column">
+        <div layout="column" style="width="88.5%;">
+          <div layout="row" style="width="88.5%;">
+            <md-content>
+              <div style="width="88.5%;" layout="row" ng-controller="ctrl">
+                <md-card style="width:88.5%;">
+                  <md-card-header>
+                    <md-card-avatar>
+                      <img src="https://s-media-cache-ak0.pinimg.com/originals/64/05/42/6405428777b883637038aa607d65281a.gif"/>
+                    </md-card-avatar>
+                    <md-card-header-text>
+                      <div layout="row">
+                        <h5 style="margin-top:8px;"> What's on your mind?</h5>
+                        <h5 style="margin-left:50%; margin-top:10px;">rating</h5>
+                        <md-slider style="width=15%;margin-left:15px;margin-top:-7px;" md-discrete ng-model="rating" step="1" min="1" max="5" aria-label="rating"></md-slider>
+                      </div>
+                    </md-card-header-text>
+                  </md-card-header>
+                  <md-card-content style="margin-top:-35px;" id="pre-file-chooser">
+                    <md-chips ng-model="tags" md-removable="removable"></md-chips>
+
+                    <!-- <div layout="row" id="pre-file-chooser"> -->
+                        <md-button  class="md-primary" style="min-width: 1%;" ng-click="uploadFile()">Post</md-button>
+                        <input id="file-chooser" style=" position:relative; position" type = "file" file-model = "myFile"/>
+                        <!-- </div> -->
+                  </md-card-content>
+                  </md-card>
+              </div>
+              <div ng-view layout="row" style="height:700px;">
+              </div>
+            </md-content>
+          </div>
+          <div layout="row">
+
+          </div>
         </div>
 
       </md-content>

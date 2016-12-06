@@ -24,7 +24,7 @@ CREATE TABLE IF NOT EXISTS "ratings" (
   uid VARCHAR(20) NOT NULL REFERENCES "user",
   tid VARCHAR(20) NOT NULL REFERENCES "thing",
   rating INT NOT NULL CHECK (rating>=0 AND rating<=5),
-  timestamp VARCHAR(30) NOT NULL,
+  timestamp LONG NOT NULL,
   media TEXT
 );
 

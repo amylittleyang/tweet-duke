@@ -19,7 +19,8 @@ module.exports = function (sequelize) {
           GROUP BY d.tid\
           HAVING COUNT(r.rating)>=0\
           ORDER BY AVG(r.rating) DESC\
-        LIMIT 5)\
+          LIMIT 8 \
+        )\
         SELECT * FROM table_t JOIN thing ON thing.tid=table_t.tid;",
 
         { type: sequelize.QueryTypes.SELECT }
@@ -49,7 +50,8 @@ module.exports = function (sequelize) {
           WHERE d.category='"+category+"'\
           GROUP BY d.tid\
           ORDER BY MAX(r.timestamp) DESC\
-          LIMIT 5)\
+          LIMIT 8\
+          )\
         SELECT * FROM table_t JOIN thing ON thing.tid=table_t.tid",
         { type: sequelize.QueryTypes.SELECT })
       .then(function(users) {
