@@ -52,6 +52,14 @@ module.exports = function (sequelize) {
       });
     }
 
+    function getTIdPosts(req,res,next) {
+      var tid = req.params.tid;
+      sequelize.query("SELECT r.tid,r.rating,t.name,r.uid,r.timestamp FROM ratings r, thing t WHERE r.tid='"+tid+"' AND r.tid=t.tid")
+      .then(function(data) {
+        res.json(data[0]);
+      });
+    }
+
     function getNewPosts (req,res,next) {
       var category = req.params.category
       // return top 5 most recent rated thing in the category
@@ -81,5 +89,5 @@ module.exports = function (sequelize) {
         });
       };
 
-  return {getTopPosts,getTagsForId,getAllCategory,getNewPosts};
+  return {getTopPosts,getTagsForId,getAllCategory,getNewPosts,getTIdPosts};
 }

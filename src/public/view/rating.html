@@ -1,0 +1,35 @@
+
+  <div flex-xs flex-gt-xs="60" flex-offset="20" layout="column">
+    <h1>&nbsp;{{name}}</h1>
+    <div ng-repeat="p in data">
+      <md-card>
+        <md-card-header>
+          <md-card-avatar>
+            <img src="https://s-media-cache-ak0.pinimg.com/originals/64/05/42/6405428777b883637038aa607d65281a.gif"/>
+          </md-card-avatar>
+          <md-card-header-text>
+            <span class="md-title">{{p.uid}}</span>
+            <div layout="row">
+              <span class="md-subhead">Rating: {{p.rating}}/5 </span>
+              <span style="margin-left:auto; margin-right:5px;" class="md-subhead">{{p.timestamp}}</span>
+            </div>
+          </md-card-header-text>
+        </md-card-header>
+        <img ng-src="http://media.gettyimages.com/photos/cameron-crazies-support-the-duke-university-blue-devils-during-the-picture-id57564780" class="md-card-image" alt="Washed Out">
+        <md-card-title>
+          <md-card-title-text>
+            <span>
+              <md-button ng-repeat="t in p.tags" class="md-primary" style="min-width: 1%;" ng-href="/#/category/{{t.tag}}">#{{t.tag}}({{t.freq}})</md-button>
+            </span>
+          </md-card-title-text>
+        </md-card-title>
+        <md-card-content>
+        </md-card-content>
+        </md-card>
+    </div>
+  </div>
+
+
+<!--
+</div>
+</md-content> -->

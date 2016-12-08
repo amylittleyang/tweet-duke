@@ -1,6 +1,6 @@
 // Declare app level module which depends on filters, and services
 
-var app = angular.module('app',['ngRoute','ngMaterial','mainController','categoryController']);
+var app = angular.module('app',['ngRoute','ngMaterial','mainController','categoryController','ratingController']);
 
 app.config(function ($routeProvider, $locationProvider) {
   $routeProvider.
@@ -13,6 +13,10 @@ app.config(function ($routeProvider, $locationProvider) {
       templateUrl: './view/home.html',
       controller: 'categoryController'
     })
+    .when('/ratings/:tid',{
+      templateUrl:'./view/rating.html',
+      controller:'ratingController'
+    });
   });
 
 app.directive('fileModel', ['$parse', function ($parse) {

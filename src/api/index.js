@@ -10,6 +10,7 @@ export default ({sequelize}) => {
   api.get('/category/new/:category',category.getNewPosts);
   api.get('/category/top/:category',category.getTopPosts);
   api.get('/tags/:tid',category.getTagsForId);
+  api.get('/rating/:tid',category.getTIdPosts);
   api.post('/post',post.newPost);
   return api;
 }
