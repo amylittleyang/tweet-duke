@@ -2,7 +2,7 @@ import http from 'http';
 import express from 'express';
 import morgan from 'morgan';
 // import cors from 'cors';
-// import bodyParser from 'body-parser';
+import bodyParser from 'body-parser';
 var fs = require('fs');
 var busboy = require('connect-busboy');
 
@@ -22,7 +22,7 @@ app.server = http.createServer(app);
 app.set('port', process.env.PORT || 3000);
 
 app.use(morgan('dev'));
-// app.use(bodyParser());
+app.use(bodyParser());
 app.use(busboy());
 
 // app.use(methodOverride());

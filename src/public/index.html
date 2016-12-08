@@ -42,60 +42,22 @@
           </div>
         </md-toolbar>
       </md-content>
-      <md-content>
+      <md-content ng-controller="ctrl">
         <div layout="row" style="width:100%; height:700px;">
           <div layout="column" style="height:700px; width:260px;">
             <md-sidenav style="width:260px; height:100%;" class="site-sidenav md-sidenav-left md-whiteframe-z2 " md-component-id="left"  md-is-locked-open="$mdMedia('gt-sm')" tabindex="-1">
           <!-- <md-content layout-padding> -->
-              <md-button href="/#/category/Animals" style="width:110%; margin-left:-10px; margin-right: -10px; text-align:left;padding-left:30px;"" class="md-primary" >
-                <i class="material-icons">pets</i>
-                Pets
+              <md-button ng-repeat="t in categories" ng-href="/#/category/{{t.tag}}" style="width:110%; margin-left:-10px; margin-right: -10px; text-align:left;padding-left:30px;"" class="md-primary" >
+                <i class="material-icons">{{t.icon}}</i>
+                {{t.tag}}
               </md-button>
 
-              <md-button href="/#/category/Food Places" style="width:110%; margin-left:-10px; margin-right: -10px; text-align:left;padding-left:30px;"" class="md-primary" >
-                <i class="material-icons">favorite</i>
-                Food
-              </md-button>
-              <md-button href="/#/category/Study Places" style="width:110%; margin-left:-10px; margin-right: -10px; text-align:left;padding-left:30px;"" class="md-primary" >
-                <i class="material-icons">content_paste</i>
-                study
-              </md-button>
-
-              <md-button href="/#/category/movies" style="width:110%; margin-left:-10px; margin-right: -10px;text-align:left; padding-left:30px;" class="md-primary">
-                <i class="material-icons">movie_filter</i>
-                Movies
-              </md-button>
-              <md-button href="/#/category/class" style="width:110%; margin-left:-10px; margin-right: -10px; text-align:left;padding-left:30px;"" class="md-primary" >
-                <i class="material-icons">class</i>
-                Math
-              </md-button>
-              <md-button href="/#/category/shows" style="width:110%; margin-left:-10px; margin-right: -10px; text-align:left;padding-left:30px;"" class="md-primary" >
-                <i class="material-icons">theaters</i>
-                Free shows
-              </md-button>
-
-              <md-button href="/#/category/speakers" style="width:110%; margin-left:-10px; margin-right: -10px; text-align:left;padding-left:30px;"" class="md-primary" >
-                <i class="material-icons">settings_voice</i>
-                speakers
-              </md-button>
-              <md-button href="/#/category/weekend" style="width:110%; margin-left:-10px; margin-right: -10px; text-align:left;padding-left:30px;"" class="md-primary" >
-                <i class="material-icons">weekend</i>
-                weekend
-              </md-button>
-              <md-button href="/#/category/photos" style="width:110%; margin-left:-10px; margin-right: -10px; text-align:left;padding-left:30px;"" class="md-primary" >
-                <i class="material-icons">camera</i>
-                photos
-              </md-button>
-              <md-button href="/#/category/holiday" style="width:110%; margin-left:-10px; margin-right: -10px; text-align:left;padding-left:30px;"" class="md-primary" >
-                <i class="material-icons">tag_faces</i>
-                fall break
-              </md-button>
           </md-sidenav>
         </div>
         <div layout="column" style="width="88.5%;">
           <div layout="row" style="width="88.5%;">
             <md-content>
-              <div style="width="88.5%;" layout="row" ng-controller="ctrl">
+              <div style="width="88.5%;" layout="row">
                 <md-card style="width:88.5%;">
                   <md-card-header>
                     <md-card-avatar>
@@ -113,7 +75,7 @@
                     <md-chips ng-model="tags" md-removable="removable"></md-chips>
 
                     <!-- <div layout="row" id="pre-file-chooser"> -->
-                        <md-button  class="md-primary" style="min-width: 1%;" ng-click="uploadFile()">Post</md-button>
+                        <md-button  class="md-primary" style="min-width: 1%;" ng-click="post()">Post</md-button>
                         <input id="file-chooser" style=" position:relative; position" type = "file" file-model = "myFile"/>
                         <!-- </div> -->
                   </md-card-content>

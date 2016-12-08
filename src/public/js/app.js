@@ -32,16 +32,16 @@ app.directive('fileModel', ['$parse', function ($parse) {
 }]);
 
 app.service('fileUpload', ['$http', function ($http) {
-  this.uploadFileToUrl = function(file, uploadUrl, successCallback, errorCallback){
+  this.uploadFileToUrl = function(file,data, successCallback, errorCallback){
      var fd = new FormData();
      fd.append('file', file);
+     for(var key in data) {
+       fd.append(key,data[key]);
+     }
 
-     $http.post(uploadUrl, fd, {
+     $http.post('/api/post',fd, {
         transformRequest: angular.identity,
         headers: {'Content-Type': undefined},
-        body: {
-          // TODO: add uid, tid, rating, tags
-        }
      })
 
      .success(function(){
@@ -55,17 +55,44 @@ app.service('fileUpload', ['$http', function ($http) {
   }
 }]);
 
-app.controller('ctrl',['$scope','fileUpload','$route',function($scope,fileUpload,$route) {
+app.controller('ctrl',['$scope','$http','fileUpload','$route',function($scope,$http,fileUpload,$route) {
   $scope.tags = [];
+  $scope.uid = 1;
   $scope.rating = 1;
-  $scope.uploadFile = function(){
+  $scope.categories = [];
+  var icons = ["favorite","pets","content_paste","movie_filter","class","theaters","settings_voice","camera","tag_faces"];
+  var timestamp = new Date();
+
+  $scope.getCategories = function() {
+    $http({
+      method: "GET",
+      url:"/api/category"
+    }).then(function (res) {
+      for (var t of res.data) {
+        t.icon = icons[getRandomInt(0,icons.length)];
+      }
+      // console.log("res.data=");
+      // console.log(res.data);
+      $scope.categories = res.data;
+    });
+  };
+
+  function getRandomInt(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min)) + min;
+  }
+
+  $scope.post = function(){
      var file = $scope.myFile;
-
-     console.log('file is ' );
-     console.dir(file);
-
-     var uploadUrl = "api/fileUpload";
-     fileUpload.uploadFileToUrl(file, uploadUrl,
+     var data = {
+       "tags":$scope.tags,
+       "rating":$scope.rating,
+       "uid":$scope.uid,
+       "timestamp": timestamp.toString()
+     };
+  // console.log($scope.tags);
+     fileUpload.uploadFileToUrl(file, data,
        function success() {
          $scope.tags = [];
          $scope.myFile = "";
@@ -75,4 +102,5 @@ app.controller('ctrl',['$scope','fileUpload','$route',function($scope,fileUpload
          alert('error');
       }) ;
   };
+  $scope.getCategories();
 }]);

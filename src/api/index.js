@@ -6,8 +6,10 @@ export default ({sequelize}) => {
   var post = require('./PostAPIController')(sequelize);
   api.get('/:uid/top',user.homePageDataTop);
   api.get('/:uid/new',user.homePageDataNew);
+  api.get('/category',category.getAllCategory);
   api.get('/category/new/:category',category.getNewPosts);
   api.get('/category/top/:category',category.getTopPosts);
-  api.post('/fileUpload',post.newPost);
+  api.get('/tags/:tid',category.getTagsForId);
+  api.post('/post',post.newPost);
   return api;
 }
