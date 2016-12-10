@@ -61,11 +61,22 @@ app.service('fileUpload', ['$http', function ($http) {
 
 app.controller('ctrl',['$scope','$http','fileUpload','$route',function($scope,$http,fileUpload,$route) {
   $scope.tags = [];
+  $scope.recentTags = [];
   $scope.uid = 1;
   $scope.rating = 1;
   $scope.categories = [];
   var icons = ["favorite","pets","content_paste","movie_filter","class","theaters","settings_voice","camera","tag_faces"];
   var timestamp = new Date();
+
+  $scope.clickTag = function(tag) {
+    var arr = $scope.recentTags;
+    if(arr.indexOf(tag) === -1) {
+      arr.push("#"+tag);
+    }
+    if(arr.length>8) {
+      arr.splice(0,1);
+    }
+  }
 
   $scope.getCategories = function() {
     $http({
