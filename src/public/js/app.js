@@ -69,9 +69,10 @@ app.controller('ctrl',['$scope','$http','fileUpload','$route',function($scope,$h
   var timestamp = new Date();
 
   $scope.clickTag = function(tag) {
+    tag = "#"+tag;
     var arr = $scope.recentTags;
     if(arr.indexOf(tag) === -1) {
-      arr.push("#"+tag);
+      arr.push(tag);
     }
     if(arr.length>8) {
       arr.splice(0,1);
