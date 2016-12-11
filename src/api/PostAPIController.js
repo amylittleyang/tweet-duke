@@ -34,7 +34,9 @@ module.exports = function (sequelize) {
   }
 
   function insertTags(tid,tags) {
+    tid = tid.replace(/'/g,"''")
     for (var tag of tags) {
+      tag = tag.replace(/'/g,"''")
       sequelize.query(" \
         SELECT tags.tag, tags.freq FROM tags WHERE tags.tag='"+tag+"' AND tid='"+tid+"' \
       ",{type:sequelize.QueryTypes.SELECT})
@@ -90,7 +92,7 @@ module.exports = function (sequelize) {
 
     req.busboy.on('finish',function () {
       var tid = data.tname.replace(/\s+/g,'')
-      var tname = data.tname;
+      var tname = data.tname.replace(/'/g,"''");
       // insert into thing is not exist
       sequelize.query("SELECT * FROM thing WHERE name='"+data.tname+"'",{type:sequelize.QueryTypes.SELECT})
       .then(function(thing) {
