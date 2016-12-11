@@ -54,7 +54,7 @@ module.exports = function (sequelize) {
 
     function getTIdPosts(req,res,next) {
       var tid = req.params.tid;
-      sequelize.query("SELECT r.tid,r.rating,t.name,r.uid,r.timestamp FROM ratings r, thing t WHERE r.tid='"+tid+"' AND r.tid=t.tid")
+      sequelize.query("SELECT r.tid,r.rating,t.name,r.uid,r.timestamp,r.media FROM ratings r, thing t WHERE r.tid='"+tid+"' AND r.tid=t.tid")
       .then(function(data) {
         res.json(data[0]);
       });

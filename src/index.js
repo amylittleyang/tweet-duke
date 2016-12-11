@@ -28,6 +28,7 @@ app.use(busboy());
 // app.use(methodOverride());
 app.use('/', routes);
 app.use(express.static(path.join(__dirname, '/public')));
+app.use(express.static(path.join(__dirname, '/../media')));
 app.use(express.static(path.join(__dirname, '/../node_modules')));
 
 var env = process.env.NODE_ENV || 'development';
@@ -51,13 +52,13 @@ if (env === 'production') {
 // app.use('/api/', api);
 
 // initialize with connection string
-var sequelize = new Sequelize('postgres://vdookpabztdayg:f23c0XpZ5ZHm5Obw29eeuu3YrL@ec2-54-247-76-24.eu-west-1.compute.amazonaws.com:5432/dd0172bbqughte',{
-  dialect: 'postgres',
-  dialectOptions: {
-    ssl: true
-  }
-});
-// var sequelize = new Sequelize('postgres://postgres@localhost:5432/cs316_project')
+// var sequelize = new Sequelize('postgres://vdookpabztdayg:f23c0XpZ5ZHm5Obw29eeuu3YrL@ec2-54-247-76-24.eu-west-1.compute.amazonaws.com:5432/dd0172bbqughte',{
+//   dialect: 'postgres',
+//   dialectOptions: {
+//     ssl: true
+//   }
+// });
+var sequelize = new Sequelize('postgres://postgres@localhost:5432/cs316_project')
 // connect to postgres database named 'cs316_project'
 sequelize
   .authenticate()

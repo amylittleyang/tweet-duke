@@ -1,3 +1,5 @@
+package funstuff;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.net.URISyntaxException;
@@ -7,9 +9,8 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.*;
 
-
 public class DataGenerator {
-    private static final int numUsers = 100;
+    private static final int numUsers = 999;
     private static final String insertUserStatement = "INSERT INTO \"user\" (uid,name) VALUES ('%s','%s %s');%n";
     private static final String insertSubscriptionStatement = "INSERT INTO \"subscribes\" (uid, category) VALUES ('%s','%s');%n";
     private static final String insertThingStatement = "INSERT INTO \"thing\" (tid,name) VALUES ('%s','%s');%n";
@@ -21,7 +22,12 @@ public class DataGenerator {
 
     private static final String namesFile = "names.txt";
     private static final String categories[] = {"Animals", "Food Places", "Study Places"};
-    private static final String media[] = {"Very good", "Good", "Ok", "Bad", "Horrible", "Never again", "5/7", "Lit", "Ehh", "Yes", "No"};
+    private static final String media[] = {"/../../media/Cameron_1.jpg", "/../../media/Cameron_2.jpeg", "/../../media/Cameron_3.jpg", "/../../media/Chapel_1.jpg", 
+    "/../../media/Chapel_2.jpg", "/../../media/Chape_3.jpg", "/../../media/Chapel_4.jpg", "/../../media/Chapel_5.png", "/../../media/Chapel_6.jpg", "/../../media/Edens_1.jpg", 
+    "/../../media/Gardens_1.jpg", "/../../media/Gardens_2.jpg", "/../../media/Gardens_3.jpeg", "/../../media/Gardens_4.jpg", "/../../media/Gardens_5.jpg", "/../../media/Kville_1.jpg", 
+    "/../../media/Kville_2.jpg", "/../../media/Kville_3.jpeg", "/../../media/Library_1.jpg", "/../../media/Library_2.jpg", "/../../media/Marketplace_1.jpg", "/../../media/Marketplace_2.jpg", 
+    "/../../media/McClendon_1.jpg", "/../../media/McClendon_2.jpg", "/../../media/Penn_1.jpg", "/../../media/Perkins_1.jpg", "/../../media/Perkins_2.jpg", "/../../media/Pitchforks_1.jpg", 
+    "/../../media/Pitchforks_2.jpg", "/../../media/Vondy_1.jpg", "/../../media/WestUnion_1.jpg", "/../../media/WestUnion_2.jpg", "/../../media/WestUnion_3.png", "/../../media/WestUnion_4.png"};
 
     private static final Pattern thingPattern = Pattern.compile("^[^']+");
     private static final Pattern tagPattern = Pattern.compile("'([^']+)'");
@@ -47,7 +53,7 @@ public class DataGenerator {
         System.out.println();
 
         /* Generate Subscriptions */
-        for (int uid = 1; uid <= numUsers; uid++){
+/*        for (int uid = 1; uid <= numUsers; uid++){
             for (int i = 0; i < categories.length; i++){
                 if (generator.nextInt(2) == 1) {
                     System.out.printf(insertSubscriptionStatement, uid, categories[i]);
@@ -56,7 +62,7 @@ public class DataGenerator {
         }
 
         System.out.println();
-
+*/
 
         /* Parse though things and Generate Directory*/
         int tidCount = 0;
@@ -71,7 +77,7 @@ public class DataGenerator {
                     tidCount++;
                     String thing = matcher.group().trim();
                     thingIDs.put(tidCount, thing);
-                    thingTags.put(tidCount, new ArrayList<>());
+                    thingTags.put(tidCount, new ArrayList<String>());
 
                     matcher.usePattern(tagPattern);
                     while (matcher.find()) {
@@ -79,7 +85,7 @@ public class DataGenerator {
                         thingTags.get(tidCount).add(tag);
                     }
 
-                    System.out.printf(insertDirectoryStatement, tidCount, category);
+//                    System.out.printf(insertDirectoryStatement, tidCount, category);
                 }
             }
             thingSc.close();
@@ -102,7 +108,7 @@ public class DataGenerator {
 
 
         /* Generate Ratings */
-        for(int i = 0; i < 20; i++) {
+        for(int i = 0; i < 200; i++) {
             int year = 2015 + generator.nextInt(2); //2015 or 2016
             int month = 1 + generator.nextInt(12); //1 to 12
             String mo = "" + month;
@@ -126,11 +132,10 @@ public class DataGenerator {
                 s = "0" + second;
             String timestamp = year + "-" + mo + "-" + d + " " + h + ":" + m + ":" + s;
 
-
             int uid = 1 + generator.nextInt(numUsers); //1 to numUsers
             int tid = 1 + generator.nextInt(tidCount); //1 to numThings
             int rating = 1 + generator.nextInt(5); //1 to 5
-            int comment = generator.nextInt(media.length); //0 to 10
+            int comment = generator.nextInt(media.length); //0 to media.length
 
             System.out.printf(insertRatingStatement, uid, tid, rating, timestamp, media[comment]);
         }
