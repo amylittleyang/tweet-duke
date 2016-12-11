@@ -51,7 +51,7 @@ if (env === 'production') {
 // app.use('/api/', api);
 
 // initialize with connection string
-var sequelize = new Sequelize('postgres://postgres@localhost:5432/cs316_project');
+var sequelize = new Sequelize('postgres://vdookpabztdayg:f23c0XpZ5ZHm5Obw29eeuu3YrL@ec2-54-247-76-24.eu-west-1.compute.amazonaws.com:5432/dd0172bbqughte');
 
 // connect to postgres database named 'cs316_project'
 sequelize
