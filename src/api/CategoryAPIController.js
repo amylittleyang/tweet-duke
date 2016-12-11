@@ -43,7 +43,7 @@ module.exports = function (sequelize) {
     function getAllCategory (req,res,next) {
       sequelize.query("SELECT tags.tag, COUNT(r.tid) AS count FROM tags, ratings r \
       WHERE tags.tid=r.tid \
-      GROUP BY tags.tag ORDER BY count DESC LIMIT 30;")
+      GROUP BY tags.tag ORDER BY count DESC;")
       .then(function(tags) {
         // console.log(tags);
         res.json(tags[0]);
